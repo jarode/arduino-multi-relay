@@ -7,7 +7,7 @@ at the same time when Domoticz.
 
 
 # Requirements / assumptions
-* Arduino board connected through UART (Serial/USB) - "/dev/ttyACM0"
+* Arduino board connected through UART (Serial/USB) - "/dev/ttyUSB0"  on RP3
 * Docker
 * Mosquitto
 * Domoticz (optional)
@@ -25,7 +25,7 @@ sudo chown 1000:1000 /docker/nodered
 ```
 Now run the container (can take some time):
 ```
-docker run -dit -p 1880:1880 -v /docker/nodered:/data --group-add dialout --device=/dev/ttyACM0 --name nodered nodered/node-red
+docker run -dit -p 1880:1880 -v /docker/nodered:/data --group-add dialout --device=/dev/ttyUSB0 --name nodered nodered/node-red
 #CTRL+C to leave docker - Node-Red will keep running in background
 ```
 More about Node-Red in Docker - https://nodered.org/docs/getting-started/docker
@@ -52,7 +52,7 @@ And from now you can re-create container using:
 ```
 docker stop nodered
 docker rm nodered
-docker run -dit -p 1880:1880 -v /docker/nodered:/data --group-add dialout --device=/dev/ttyACM0 --name nodered my-node-red
+docker run -dit -p 1880:1880 -v /docker/nodered:/data --group-add dialout --device=/dev/ttyUSB0 --name nodered my-node-red
 #CTRL+C to leave docker - Node-Red will keep running in background
 ```
 
